@@ -288,7 +288,7 @@ int snd_use_case_get(snd_use_case_mgr_t *uc_mgr,
     }
 
     if (!strncmp(identifier, "_verb", 5)) {
-        if (uc_mgr->card_ctxt_ptr->current_verb != NULL) {
+        if (!strncmp(uc_mgr->card_ctxt_ptr->current_verb, '\0', sizeof('\0'))) {
             *value = strdup(uc_mgr->card_ctxt_ptr->current_verb);
         } else {
             *value = NULL;
